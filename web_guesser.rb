@@ -28,8 +28,30 @@ def check_guess(guess)
   end
 end
 
+def color_picker(guess)
+  diff = (NUMBER - guess.to_i).abs
+  if guess == nil
+    ""
+  elsif guess.to_i > NUMBER
+    if diff > 5
+      "CF4647"
+    else
+      "EB7B59"
+    end
+  elsif guess.to_i < NUMBER
+    if diff > 5
+      "CF4647"
+    else
+      "EB7B59"
+    end
+  elsif guess.to_i == NUMBER
+    "A7C5BD"  
+  end
+end
+
 get '/' do
   guess = params["guess"]
   message = check_guess(guess)
-  erb :index, :locals => {:number => NUMBER, :message => message}
+  color = color_picker(guess)
+  erb :index, :locals => {:number => NUMBER, :message => message, :color => color}
 end
