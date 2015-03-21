@@ -4,17 +4,25 @@
       body {
         background: #<%= color %>;
       }
+      ul {
+        list-style-type: none;
+      }
     </style>  
   </head>
   <body>
     <p>
       Guess a number between 0 and 100!<br><br>
-      <%= message %>
-      <!-- The SECRET NUMBER is <%= number %> -->
+      <%= message %><br><br>
+      You have <%= turns %> turns left
     </p>
     <form>
       <input type='text' name='guess' />
       <input type='submit' value='Guess!' />
     </form>
+    <ul>
+    <% guesses.each do |guess| %>
+      <li><%= guess %></li>
+    <% end %>
+    </ul>
   </body>
 </html>
